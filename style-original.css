@@ -17,4 +17,20 @@
 @media(max-width:950px){.clothing{padding:73px 27px 78px}.clothing-detail{grid-template-columns:1fr 1fr}.garment-copy{padding:34px 30px}}
 @media(max-width:680px){.clothing{padding:58px 16px 58px}.clothing-intro{display:block;margin-bottom:22px}.clothing-heading h2{font-size:2.55rem}.clothing-lead{font-size:.83rem;margin:12px 0 0;max-width:410px}.clothing-menu{display:flex;overflow-x:auto;scrollbar-width:thin;border-top:0;border-bottom:1px solid var(--line);gap:7px;padding:0 0 1px}.clothing-tab{flex:0 0 auto;width:auto;min-height:44px;display:flex;gap:9px;padding:0 12px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;font-size:.8rem}.clothing-tab:hover,.clothing-tab.selected{padding:0 12px;background:transparent;border-bottom-color:#df7884}.clothing-detail{min-height:0;grid-template-columns:1fr;grid-template-rows:230px auto;border-radius:4px 28px 4px 28px}.garment-stage{min-height:230px}.garment-stage svg{width:145px;height:145px}.garment-copy{padding:26px 23px}.soon-label{margin-bottom:17px}.garment-copy h3{font-size:2.45rem}.garment-copy>p:not(.soon-label):not(.small-overline){font-size:.85rem}}
 
+/* A warm editorial pause in place of the duplicate category catalog. */
+.talk-to-us{max-width:1210px;min-height:390px;margin:0 auto;padding:76px 70px;display:grid;grid-template-columns:.78fr 1.22fr;align-items:center;gap:70px;position:relative;overflow:hidden;background:#f2e9cf;border-radius:4px 78px 4px 78px}
+.talk-art{min-height:230px;display:flex;align-items:center;justify-content:center;position:relative}
+.talk-art:before{content:"";position:absolute;width:245px;height:245px;border-radius:50%;background:#fff8ed}
+.talk-art img{position:relative;width:210px;height:210px;object-fit:contain}
+.talk-flower{position:absolute;z-index:1;top:0;right:15%;color:var(--pink);font-size:2.1rem}
+.talk-art p{position:absolute;left:0;bottom:-18px;margin:0;color:#7d8f50;font:800 1rem/1.1 'Baloo 2',sans-serif;transform:rotate(-5deg)}
+.talk-copy{position:relative;z-index:1;max-width:570px}
+.talk-copy h2{margin:0;color:var(--brown);font:800 clamp(2.7rem,4.3vw,4.2rem)/.98 'Baloo 2',sans-serif;letter-spacing:-.05em}
+.talk-copy>p:not(.hand-label){max-width:490px;color:#786750;line-height:1.8;font-size:.97rem}
+.talk-copy .primary-link{margin-top:7px}
+.talk-note{margin:18px 0 0;font-size:.76rem!important;font-weight:800;color:#947c61!important}
+.talk-doodle{position:absolute;right:45px;top:25px;color:#edb4a7;font-size:3.5rem;transform:rotate(12deg)}
+@media(max-width:950px){.talk-to-us{margin:0 24px;padding:60px 42px;gap:35px;grid-template-columns:.8fr 1.2fr}.talk-art img{width:185px;height:185px}.talk-art:before{width:215px;height:215px}}
+@media(max-width:680px){.talk-to-us{display:flex;flex-direction:column;align-items:stretch;gap:27px;margin:0 10px;padding:37px 24px 35px;border-radius:4px 42px 4px 42px}.talk-art{min-height:175px;align-self:center;width:100%;max-width:260px}.talk-art:before{width:175px;height:175px}.talk-art img{width:165px;height:165px}.talk-art p{left:0;bottom:-4px;font-size:.85rem}.talk-flower{right:12%;top:-3px}.talk-copy h2{font-size:2.7rem}.talk-copy>p:not(.hand-label){font-size:.87rem;line-height:1.65}.talk-doodle{right:22px;top:13px;font-size:2.5rem}}
+
 
