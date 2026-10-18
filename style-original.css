@@ -51,5 +51,9 @@
 .art-note,.mascot-seal,.stitch{display:none}
 @media(max-width:950px){.opening{min-height:520px;padding:45px 30px}.opening-copy{width:53%;min-height:430px;padding-left:6px}.opening h1{font-size:clamp(3rem,5.6vw,3.9rem)}.opening-art{width:68%;height:100%;min-height:0;padding:0}}
 @media(max-width:680px){.opening{display:flex;min-height:0;flex-direction:column;align-items:stretch;gap:16px;margin:0 9px;padding:34px 21px 20px;border-radius:6px 38px 6px 38px}.opening-copy{width:100%;min-height:0;padding:0}.opening h1{font-size:clamp(2.85rem,12vw,4rem)}.opening-art{position:relative;inset:auto;width:calc(100% + 28px);height:auto;min-height:0;margin:0 -14px;overflow:hidden;padding:0;aspect-ratio:1008/310}.opening-art:before{inset:0 0 auto;width:100%;height:23%;background:linear-gradient(180deg,#f7e7d7 0%,#f7e7d700 100%)}.opening-art .hero-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:none}.opening-footnote{margin-bottom:0}}
+.opening-copy{position:relative;z-index:5;width:min(42%,560px)}
+.opening-art{z-index:1;width:56%}
+@media(max-width:950px){.opening-copy{width:44%;min-height:430px}.opening-art{width:53%}}
+@media(max-width:680px){.opening-copy{width:100%;min-height:0}.opening-art{z-index:1;width:calc(100% + 28px)}}
 
 
