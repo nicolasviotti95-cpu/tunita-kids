@@ -32,3 +32,28 @@ tabs.forEach((tab,index)=>{
 });
 document.querySelector("#year").textContent=new Date().getFullYear();
 
+const menuTrigger=document.querySelector("#menu-trigger");
+const sideMenu=document.querySelector("#side-menu");
+const drawerShade=document.querySelector("#drawer-shade");
+const drawerClose=document.querySelector("#drawer-close");
+function setDrawerOpen(open){
+  menuTrigger.setAttribute("aria-expanded",String(open));
+  sideMenu.setAttribute("aria-hidden",String(!open));
+  sideMenu.inert=!open;
+  sideMenu.classList.toggle("is-open",open);
+  drawerShade.hidden=!open;
+  document.body.classList.toggle("drawer-open",open);
+  if(open)drawerClose.focus();else menuTrigger.focus();
+}
+menuTrigger.addEventListener("click",()=>setDrawerOpen(menuTrigger.getAttribute("aria-expanded")!=="true"));
+drawerClose.addEventListener("click",()=>setDrawerOpen(false));
+drawerShade.addEventListener("click",()=>setDrawerOpen(false));
+sideMenu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setDrawerOpen(false)));
+sideMenu.querySelectorAll("[data-select-category]").forEach(button=>button.addEventListener("click",()=>{
+  const tab=tabs.find(item=>item.dataset.item===button.dataset.selectCategory);
+  if(tab)selectGarment(tab);
+  setDrawerOpen(false);
+  document.querySelector("#ropa").scrollIntoView({behavior:"auto",block:"start"});
+}));
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menuTrigger.getAttribute("aria-expanded")==="true")setDrawerOpen(false)});
+
