@@ -9,9 +9,10 @@ categoryButtons.forEach(button=>button.addEventListener("click",()=>{
   const category=categoryNames[button.dataset.selectCategory];
   if(category){
     contactTitle.textContent=`¿Buscás ${category}?`;
-    contactDescription.textContent=`El catálogo de ${category} se está preparando. Escribinos y te contamos las novedades de esta categoría.`;
+    contactDescription.textContent=`Consultanos por ${category}: revisamos las opciones disponibles y coordinamos tu pedido por WhatsApp.`;
     contactWhatsapp.href=`https://wa.me/59892822192?text=${encodeURIComponent(`Hola Tunita Kids, quería consultar por ${category}.`)}`;
-    contactWhatsapp.setAttribute("aria-label",`Consultar por ${category} en WhatsApp`);
+    contactWhatsapp.textContent="Consultar disponibilidad →";
+    contactWhatsapp.setAttribute("aria-label",`Consultar disponibilidad de ${category} por WhatsApp`);
   }
   setDrawerOpen(false);
   document.querySelector("#ropa").scrollIntoView({behavior:"smooth",block:"start"});
