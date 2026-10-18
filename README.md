@@ -13,5 +13,16 @@ Abrí `index.html` en un navegador para recorrer la página.
 3. En **Build and deployment**, elegí **Deploy from a branch**.
 4. Seleccioná la rama principal y la carpeta `/ (root)` y guardá.
 
-El sitio usa rutas relativas para que funcione en GitHub Pages. El catálogo se podrá completar con prendas y precios cuando estén definidos.
+El sitio usa rutas relativas para que funcione en GitHub Pages. La gestión de productos vive en `admin.html`; una vez conectado Supabase, las prendas y sus fotos se mantienen desde esa pantalla.
+
+## Conectar la administración
+
+1. Creá un proyecto de Supabase desde tu cuenta.
+2. En **SQL Editor**, ejecutá el contenido de `supabase-setup.sql`.
+3. En **Authentication → Users**, creá el usuario privado que vas a usar para iniciar sesión. No habilites el registro público de usuarios.
+4. Copiá el UUID de ese usuario y agregalo en SQL Editor con la instrucción comentada al final de `supabase-setup.sql`.
+5. En **Project Settings → API Keys**, copiá la URL del proyecto y la publishable key en `supabase-config.js`.
+6. Publicá los cambios. Entrá a `/tunita-kids/admin.html` para administrar el catálogo.
+
+La publishable key puede estar en la web porque las políticas RLS limitan quién puede escribir. Nunca copies una `service_role` key en `supabase-config.js`.
 
