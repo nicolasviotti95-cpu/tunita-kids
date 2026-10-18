@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8ed">
+  <title>Administrar catálogo · Tunita Kids</title>
+  <link rel="icon" href="assets/tunita-mascot-v2.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-original.css?v=20261018-8">
+  <link rel="stylesheet" href="admin.css?v=1">
+  <script defer src="supabase-config.js?v=1"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="admin.js?v=1"></script>
+</head>
+<body class="admin-page">
+  <div class="notice-bar"><span>Mercedes, Soriano</span><i>✿</i><span>Administración de Tunita Kids</span></div>
+  <header class="admin-header">
+    <a class="wordmark" href="index.html"><img src="assets/tunita-mascot-v2.png" alt="" width="54" height="54"><span><b>Tunita</b><small>KIDS</small></span></a>
+    <a class="admin-back" href="index.html">← Volver a la tienda</a>
+  </header>
+  <main class="admin-main">
+    <section class="admin-intro">
+      <p class="hand-label"><span>✿</span> Tu tienda, a tu manera</p>
+      <h1>Administrá el <em>catálogo.</em></h1>
+      <p>Subí una prenda, actualizá su precio o sacala de la vidriera cuando quieras.</p>
+    </section>
+
+    <section id="setup-notice" class="admin-notice" hidden>
+      <img src="assets/tunita-mascot-v2.png" alt="" width="62" height="62">
+      <div><h2>Estamos preparando tu espacio</h2><p>La pantalla ya está lista. Falta conectarla a la base privada para que los cambios se guarden y aparezcan en la tienda.</p></div>
+    </section>
+
+    <section id="login-panel" class="admin-panel login-panel" hidden>
+      <div class="panel-title"><div><p class="hand-label"><span>♡</span> Solo para vos</p><h2>Entrar a Tunita</h2></div><span class="panel-flower">✿</span></div>
+      <form id="login-form" class="admin-form login-form">
+        <label>Correo electrónico<input id="login-email" name="email" type="email" autocomplete="username" required></label>
+        <label>Contraseña<input id="login-password" name="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary-link admin-submit" type="submit">Iniciar sesión <span>→</span></button>
+      </form>
+      <p class="admin-feedback" id="login-feedback" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><p class="hand-label"><span>✿</span> El roperito</p><h2>Tus prendas</h2></div><button id="logout-button" class="quiet-button" type="button">Cerrar sesión</button></div>
+      <div class="dashboard-grid">
+        <section class="admin-panel product-editor" aria-labelledby="editor-title">
+          <div class="panel-title"><div><p class="hand-label"><span>♡</span> Una nueva historia</p><h2 id="editor-title">Agregar prenda</h2></div><span class="panel-flower">✿</span></div>
+          <form id="product-form" class="admin-form">
+            <input id="product-id" type="hidden">
+            <label>Nombre de la prenda<input id="product-name" name="name" maxlength="100" placeholder="Ej.: Conjunto Teddy Rayas" required></label>
+            <div class="form-row">
+              <label>Tipo de prenda<select id="product-category" name="category" required><option value="">Elegí una categoría</option><option>Remeras</option><option>Pantalones</option><option>Buzos</option><option>Shorts</option><option>Medias</option><option>Conjuntos</option><option>Vestidos</option><option>Otros</option></select></label>
+              <label>Para<select id="product-audience" name="audience"><option value="">Todas las infancias</option><option>Bebés</option><option>Niñas</option><option>Varones</option><option>Unisex</option></select></label>
+            </div>
+            <label>Detalle corto<input id="product-detail" name="detail" maxlength="120" placeholder="Ej.: Buzo y pantalón · Poca felpa"></label>
+            <label>Precio de venta (pesos uruguayos)<div class="price-input"><span>$</span><input id="product-price" name="price" type="number" min="0" step="1" placeholder="1290" required></div></label>
+            <label>Descripción<textarea id="product-description" name="description" rows="3" maxlength="500" placeholder="Contá brevemente cómo es la prenda."></textarea></label>
+            <label class="upload-label">Foto de la prenda<input id="product-image" name="image" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-hint">JPG, PNG o WebP · hasta 5 MB</span></label>
+            <div id="image-preview-wrap" class="image-preview-wrap" hidden><img id="image-preview" alt="Vista previa de la prenda"><span>Foto elegida</span></div>
+            <label class="publish-toggle"><input id="product-active" type="checkbox" checked><span><b>Mostrar en la tienda</b><small>Podés ocultarla temporalmente sin borrarla.</small></span></label>
+            <div class="form-actions"><button class="primary-link admin-submit" id="save-product" type="submit">Guardar prenda <span>→</span></button><button class="quiet-button" id="cancel-edit" type="button" hidden>Cancelar edición</button></div>
+          </form>
+          <p class="admin-feedback" id="product-feedback" role="status" aria-live="polite"></p>
+        </section>
+        <section class="admin-panel inventory-panel" aria-labelledby="inventory-title">
+          <div class="panel-title"><div><p class="hand-label"><span>✿</span> A la vista</p><h2 id="inventory-title">En tu tienda</h2></div><span class="inventory-count" id="inventory-count">—</span></div>
+          <p class="inventory-hint">Las prendas ocultas siguen guardadas y podés volver a publicarlas.</p>
+          <div id="product-list" class="product-list"><p class="empty-state">Cargando tu catálogo…</p></div>
+          <p class="admin-feedback" id="list-feedback" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="admin-footer"><span>✿</span> Tunita Kids · Hecho con amor en Mercedes</footer>
+</body>
+</html>
+
