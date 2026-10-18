@@ -13,4 +13,6 @@ Abrí `index.html` en un navegador para recorrer la página.
 3. En **Build and deployment**, elegí **Deploy from a branch**.
 4. Seleccioná la rama principal y la carpeta `/ (root)` y guardá.
 
-El sitio usa rutas relativas para que funcione en GitHub Pages. El catálogo se podrá completar con prendas y precios cuando estén definidos.
+El sitio usa rutas relativas para que funcione en GitHub Pages. La portada usa los recursos oficiales de Tunita Kids. El catálogo se podrá completar con prendas y precios cuando estén definidos.
+
+
