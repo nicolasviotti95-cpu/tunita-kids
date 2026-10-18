@@ -1,8 +1,8 @@
 const garments={
   remeras:{title:"Remeras",overline:"Para jugar y pasear",description:"Colores alegres y comodidad para acompañar cada juego, paseo y abrazo.",caption:"La primera colección",label:"Ilustración de una remera",tone:"#ed8a95",path:"M54 25 37 31 20 47l14 17 12-9v70h68V55l12 9 14-17-17-16-17-6c-4 13-12 19-26 19s-22-6-26-19Z"},
-  pantalones:{title:"Pantalones",overline:"Libres para explorar",description:"Prendas cómodas para correr, descubrir y moverse con total libertad.",caption:"Libertad para moverse",label:"Ilustración de un pantalón",tone:"#94ad62",path:"M43 24h74l-7 111-29-50-30 50Z"},
+  pantalones:{title:"Pantalones",overline:"Libres para explorar",description:"Prendas cómodas para correr, descubrir y moverse con total libertad.",caption:"Libertad para moverse",label:"Ilustración de un pantalón",tone:"#94ad62",path:"M40 24h80l-5 47-24 2-11 62H61L52 73l-16-2Z"},
   buzos:{title:"Buzos",overline:"Suaves como un mimo",description:"Un abrazo calentito para sumar color a los días frescos y las tardes de paseo.",caption:"Un abrazo calentito",label:"Ilustración de un buzo",tone:"#b597c9",path:"M55 24 39 30 20 49l14 18 13-10v67h66V57l13 10 14-18-19-19-16-6c-5 12-13 18-25 18S60 36 55 24Z M59 24c1-12 9-19 21-19s20 7 21 19"},
-  shorts:{title:"Shorts",overline:"Listos para salir",description:"Livianos y cómodos para disfrutar los días de sol y cada nueva aventura.",caption:"Días de sol",label:"Ilustración de un short",tone:"#e7bd50",path:"M37 25h86l-8 105-31-35-31 35Z"},
+  shorts:{title:"Shorts",overline:"Listos para salir",description:"Livianos y cómodos para disfrutar los días de sol y cada nueva aventura.",caption:"Días de sol",label:"Ilustración de un short",tone:"#e7bd50",path:"M38 24h84l-8 77H87l-7-29-9 29H46Z"},
   medias:{title:"Medias",overline:"Pequeños grandes detalles",description:"Detalles suaves y coloridos para completar sus looks de todos los días.",caption:"Detalles con amor",label:"Ilustración de un par de medias",tone:"#68aaa0",path:"M39 19h36v66H54v18l28 10v24H27v-35l12-18Zm48 0h36v66h-21v18l28 10v24H75v-35l12-18Z"}
 };
 const tabs=[...document.querySelectorAll(".clothing-tab")];
