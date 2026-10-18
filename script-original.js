@@ -1,5 +1,27 @@
 document.querySelector("#year").textContent=new Date().getFullYear();
 
+const catalog=document.querySelector("#catalogo");
+const catalogLinks=document.querySelector("#catalog-links");
+const catalogProducts=Array.isArray(window.TUNITA_PRODUCTS)?window.TUNITA_PRODUCTS:[];
+const escapeHTML=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+const slugify=value=>String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const groups=new Map();
+catalogProducts.forEach(product=>{
+  if(!product.category||!product.name||!product.image)return;
+  if(!groups.has(product.category))groups.set(product.category,[]);
+  groups.get(product.category).push(product);
+});
+catalog.innerHTML=[...groups.entries()].map(([category,products])=>{
+  const sectionId=`categoria-${slugify(category)}`;
+  return `<section class="featured-product" id="${sectionId}"><div class="product-heading"><p class="hand-label"><span>✿</span> Una selección para ${escapeHTML(category.toLowerCase())}</p><p>Prendas por pedido, sujetas a disponibilidad.</p></div>${products.map(product=>{
+    const title=escapeHTML(product.name),detail=escapeHTML(product.detail||"Prenda infantil"),description=escapeHTML(product.description||"Consultanos por WhatsApp para conocer más detalles.");
+    const price=Number(product.price),formattedPrice=Number.isFinite(price)?new Intl.NumberFormat("es-UY").format(price):escapeHTML(product.price||"Consultar");
+    const message=encodeURIComponent(`Hola Tunita Kids, quiero consultar por ${product.name}.`);
+    return `<article class="product-spread"><div class="product-photo"><img src="${escapeHTML(product.image)}" alt="${title}: ${detail}" loading="lazy"><span>${detail}</span></div><div class="product-details"><p class="product-kicker">${escapeHTML(category)} <i>·</i> Por pedido</p><h2>${title}</h2><p class="product-description">${description}</p><div class="product-price"><span>Precio</span><strong>$${formattedPrice}</strong><small>Consultá talles y disponibilidad</small></div><a class="primary-link" href="https://wa.me/59892822192?text=${message}" target="_blank" rel="noreferrer">Consultar por WhatsApp <span>↗</span></a><p class="product-note">Confirmamos disponibilidad antes de coordinar tu pedido.</p></div></article>`;
+  }).join("")}</section>`;
+}).join("");
+catalogLinks.innerHTML=[...groups.keys()].map(category=>`<a class="drawer-link" href="#categoria-${slugify(category)}">${escapeHTML(category)} <span>✿</span></a>`).join("");
+
 const categoryNames={remeras:"remeras",pantalones:"pantalones",buzos:"buzos",shorts:"shorts",medias:"medias"};
 const categoryButtons=[...document.querySelectorAll("[data-select-category]")];
 const contactTitle=document.querySelector("#contact-title");
