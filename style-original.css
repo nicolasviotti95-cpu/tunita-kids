@@ -40,4 +40,16 @@
 .talk-flower{position:absolute;left:10%;bottom:15%;color:#9caf70;font-size:2.5rem;transform:rotate(-12deg)}
 @media(max-width:680px){.talk-to-us{min-height:0;display:flex;align-items:center;justify-content:center;margin:0 10px;padding:42px 24px 39px}.talk-copy{text-align:center}.talk-copy .hand-label{justify-content:center}.talk-doodle{right:18px;top:18px;transform:rotate(12deg);font-size:2rem}.talk-flower{left:17px;bottom:17px;font-size:1.5rem}}
 
+/* Tunita hero: text-led composition with the original brand banner as a wide visual. */
+.opening{min-height:590px;display:block;padding:58px 48px 52px;background:#f7e7d7;border-radius:6px 68px 6px 68px}
+.opening:after{right:-120px;top:-190px;width:420px;height:420px;background:#efdcef;z-index:0}
+.opening-copy{width:min(51%,600px);min-height:480px;padding-left:20px;justify-content:center}
+.opening h1{font-size:clamp(3.2rem,5vw,4.9rem)}
+.opening-art{position:absolute;z-index:1;right:0;top:0;width:69%;height:100%;min-height:0;padding:0;display:block;pointer-events:none}
+.opening-art:before{content:"";position:absolute;z-index:2;inset:0 auto 0 -1px;width:25%;background:linear-gradient(90deg,#f7e7d7 0%,#f7e7d7c9 35%,#f7e7d700 100%)}
+.opening-art .hero-cover{position:absolute;top:50%;right:-1.5%;display:block;width:100%;max-width:none;height:auto;transform:translateY(-50%);border:0;border-radius:0;box-shadow:none}
+.art-note,.mascot-seal,.stitch{display:none}
+@media(max-width:950px){.opening{min-height:520px;padding:45px 30px}.opening-copy{width:53%;min-height:430px;padding-left:6px}.opening h1{font-size:clamp(3rem,5.6vw,3.9rem)}.opening-art{width:68%;height:100%;min-height:0;padding:0}}
+@media(max-width:680px){.opening{display:flex;min-height:0;flex-direction:column;align-items:stretch;gap:16px;margin:0 9px;padding:34px 21px 20px;border-radius:6px 38px 6px 38px}.opening-copy{width:100%;min-height:0;padding:0}.opening h1{font-size:clamp(2.85rem,12vw,4rem)}.opening-art{position:relative;inset:auto;width:calc(100% + 28px);height:auto;min-height:0;margin:0 -14px;overflow:hidden;padding:0;aspect-ratio:1008/310}.opening-art:before{inset:0 0 auto;width:100%;height:23%;background:linear-gradient(180deg,#f7e7d7 0%,#f7e7d700 100%)}.opening-art .hero-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:none}.opening-footnote{margin-bottom:0}}
+
 
