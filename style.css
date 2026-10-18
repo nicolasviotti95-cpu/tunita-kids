@@ -4,4 +4,20 @@ img{max-width:100%}:root{--pink:#e9828d;--coral:#f1ad9d;--yellow:#f4d17a;--sage:
 @media(max-width:850px){.service-strip{margin:0 22px 6px;gap:13px;padding:17px}.service-strip>div{grid-template-columns:29px 1fr;column-gap:7px}.service-strip>div>span{width:29px;height:29px}.service-strip b{font-size:.81rem}.service-strip small{font-size:.65rem}}
 @media(max-width:600px){.service-strip{margin:0 14px;padding:16px 18px;display:grid;grid-template-columns:1fr;gap:13px;border-radius:18px}.service-strip>i{height:1px;width:100%}.service-strip>div{grid-template-columns:32px 1fr}.service-strip>div>span{width:30px;height:30px}.service-strip b{font-size:.84rem}.service-strip small{font-size:.68rem}}
 
+/* Versión más alegre: conserva la identidad de Tunita con acentos más vivos. */
+:root{--pink:#ef7187;--coral:#ff9a83;--yellow:#ffd85e;--sage:#83b64c;--lilac:#b994d5;--brown:#634a38;--ink:#594735;--cream:#fff9ed;--white:#fffefa}
+body{background:radial-gradient(ellipse at 12% 23%,#ffe6df66 0,transparent 27rem),radial-gradient(ellipse at 89% 51%,#e9e0f766 0,transparent 30rem),var(--cream)}
+.announcement{background:#ef7187;color:#fffdf7}.announcement span{color:#ffe47a}
+.brand b,.footer-brand b{color:#ef7187}.brand small{color:#75a83f}
+.nav a:hover,.social-link:hover,.under-link:hover{color:#e65e79}.nav .nav-cta{background:#ffda61;box-shadow:0 4px 0 #edbc38}
+.hero-art{box-shadow:0 17px 36px #d77d7626}.hero h1 span,.story-copy h2 span,.section-heading h2 span{color:#ef7187}.eyebrow{color:#e5637c}.eyebrow-dot{background:#83b64c;box-shadow:0 0 0 4px #83b64c30}
+.button-pink{background:#ef7187;box-shadow:0 4px 0 #d85b74}.button-pink:hover{box-shadow:0 8px 18px #e7657d44}
+.ticker{background:#77a944}.ticker-track b{color:#ffe279}
+.service-strip{background:#fffefa;border:1px solid #f4e5d5;box-shadow:0 12px 28px #e1848220}.service-strip>div>span{background:#ffe2df;color:#e75d77}.service-strip>div:nth-of-type(2)>span{background:#fff0b9;color:#8e711b}.service-strip>div:nth-of-type(3)>span{background:#dff2e7;color:#5c9e54}.service-strip b{color:#634a38}
+.story-shape{background:linear-gradient(145deg,#ffe1d7,#ffeeb5 55%,#e1f0cd)}.story-sticker{background:#ffda61;box-shadow:0 4px 0 #edbc38}.orbit-two{color:#73a845}
+.feature{border:1px solid #ffffffb0;box-shadow:0 8px 18px #70543c12}.feature-peach{background:linear-gradient(140deg,#ffddd7,#ffc7c4)}.feature-yellow{background:linear-gradient(140deg,#fff0b6,#ffe08a)}.feature-lilac{background:linear-gradient(140deg,#ebddf7,#d9eeda)}.feature-art{display:inline-grid;place-items:center;width:53px;height:53px;border-radius:17px;background:#fff9e5;box-shadow:0 4px 9px #694c3015}.feature-doodle{color:#e6657d4d}
+.coming{background:linear-gradient(115deg,#ffe7d3,#ffe7e8 53%,#f1e5fa)}.coming:before{background:#ffdc59;opacity:.72}.coming:after{background:#86bf78;opacity:.58}.coming-mascot{background:#fffdf5;box-shadow:0 12px 25px #c881792b}.coming .eyebrow{color:#df647b}.button-brown{background:#78a944;color:#fff;box-shadow:0 4px 0 #5c8833}.coming-contact{color:#634a38}
+footer{background:#6f9d43}footer>span i{color:#ffb4be}footer small{border-color:#ffffff3d;color:#f4f3da}
+@media(max-width:600px){.service-strip{background:#fffefa}.hero h1{color:#634a38}.coming{background:linear-gradient(155deg,#ffe7d3,#ffe6ea 57%,#f1e5fa)}}
+
 
