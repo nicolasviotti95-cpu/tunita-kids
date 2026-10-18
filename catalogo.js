@@ -1,8 +1,4 @@
-/*
-  Catálogo de Tunita Kids
-  Para agregar una prenda, copiá un bloque de producto y cambiá sus datos.
-  Para quitarla, borrá solo su bloque. Las imágenes van dentro de assets/.
-*/
+/* Catálogo de respaldo mientras se conecta la administración con Supabase. */
 window.TUNITA_PRODUCTS = [
   {
     category: "Varones",
