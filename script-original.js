@@ -1,4 +1,5 @@
-document.querySelector("#year").textContent=new Date().getFullYear();
+const yearNode=document.querySelector("#year");
+if(yearNode)yearNode.textContent=new Date().getFullYear();
 
 const catalog=document.querySelector("#catalogo");
 let catalogProducts=Array.isArray(window.TUNITA_PRODUCTS)?window.TUNITA_PRODUCTS:[];
@@ -42,7 +43,8 @@ categoryButtons.forEach(button=>button.addEventListener("click",()=>{
   const category=button.dataset.catalogCategory;
   const section=document.querySelector(`#categoria-${slugify(category)}`);
   setDrawerOpen(false);
-  if(section){section.scrollIntoView({behavior:"smooth",block:"start"});return;}
+  if(section){document.querySelector("#ropa").hidden=true;section.scrollIntoView({behavior:"smooth",block:"start"});return;}
+  document.querySelector("#ropa").hidden=false;
   contactTitle.textContent=`¿Buscás ${category.toLowerCase()}?`;
   contactDescription.textContent=`Estamos preparando esta parte del catálogo. Escribinos y consultamos opciones y disponibilidad de ${category.toLowerCase()}.`;
   contactWhatsapp.href=`https://wa.me/59892822192?text=${encodeURIComponent(`Hola Tunita Kids, quería consultar por ${category.toLowerCase()}.`)}`;
@@ -79,6 +81,8 @@ function setDrawerOpen(open){
   if(open)drawerClose.focus();else menuTrigger.focus();
 }
 menuTrigger.addEventListener("click",()=>setDrawerOpen(menuTrigger.getAttribute("aria-expanded")!=="true"));
+document.querySelector("#hero-open-categories").addEventListener("click",()=>setDrawerOpen(true));
+document.querySelector("#return-to-categories").addEventListener("click",()=>setDrawerOpen(true));
 drawerClose.addEventListener("click",()=>setDrawerOpen(false));
 drawerShade.addEventListener("click",()=>setDrawerOpen(false));
 sideMenu.addEventListener("click",event=>{if(event.target.closest("a"))setDrawerOpen(false)});
