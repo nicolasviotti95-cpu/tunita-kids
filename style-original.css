@@ -75,6 +75,14 @@
 .product-price small{grid-column:1/-1;margin-top:7px;color:#8b7965;font-size:.72rem;font-weight:800}
 .product-details .primary-link{font-size:.78rem}
 .product-note{margin:16px 0 0;color:#947e65;font-size:.7rem;font-weight:800}
+.order-flow{max-width:1210px;margin:21px auto 18px;padding:18px 28px 15px;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:28px;row-gap:7px;border:1px solid #eadcc9;border-radius:5px 28px 5px 28px;background:#fffdf7}
+.order-flow-heading{display:flex;align-items:center;gap:9px;color:#76563f;font:800 .97rem 'Baloo 2',sans-serif;white-space:nowrap}
+.order-flow-heading span{color:var(--pink);font-size:1.1rem}.order-flow-heading p{margin:0}
+.order-flow-steps{display:flex;align-items:center;justify-content:center;gap:clamp(9px,2vw,24px);margin:0;color:#6f5a44;font-size:.81rem;font-weight:900;text-align:center}
+.order-flow-steps i{color:#de7884;font-style:normal;font-size:1rem}
+.order-flow-note{grid-column:2;margin:0;color:#967f66;font-size:.68rem;font-weight:800;text-align:center}
+@media(max-width:760px){.order-flow{margin:14px 15px;padding:15px 17px;grid-template-columns:1fr;gap:8px;text-align:center}.order-flow-heading{justify-content:center}.order-flow-steps{gap:8px;font-size:.72rem}.order-flow-steps i{font-size:.85rem}.order-flow-note{grid-column:1;font-size:.66rem}}
+@media(max-width:430px){.order-flow-steps{display:grid;grid-template-columns:1fr;gap:4px}.order-flow-steps i{transform:rotate(90deg)}}
 @media(max-width:950px){.featured-product{padding:67px 26px}.product-spread{min-height:400px;grid-template-columns:1fr 1fr}.product-photo{min-height:400px}.product-details{padding:34px 30px}}
 @media(max-width:680px){.featured-product{padding:56px 16px 48px}.product-heading{display:block;margin-bottom:14px}.product-heading>p:last-child{margin:8px 0 0 24px;font-size:.7rem}.product-spread{grid-template-columns:1fr;border-radius:4px 32px 4px 32px}.product-photo{min-height:0;aspect-ratio:1/1}.product-photo img{max-height:none}.product-photo>span{left:13px;bottom:13px;font-size:.63rem}.product-details{padding:28px 23px 31px}.product-details h2{font-size:2.9rem}.product-description{margin:13px 0 18px;font-size:.84rem}.product-price{margin-bottom:17px}.product-price strong{font-size:2rem}.product-note{font-size:.66rem}}
 
