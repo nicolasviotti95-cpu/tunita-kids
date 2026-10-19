@@ -1,7 +1,6 @@
 document.querySelector("#year").textContent=new Date().getFullYear();
 
 const catalog=document.querySelector("#catalogo");
-const catalogLinks=document.querySelector("#catalog-links");
 let catalogProducts=Array.isArray(window.TUNITA_PRODUCTS)?window.TUNITA_PRODUCTS:[];
 const escapeHTML=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 const slugify=value=>String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -23,35 +22,48 @@ function renderCatalog(){
     return `<article class="product-spread"><div class="product-photo"><img src="${escapeHTML(product.image)}" alt="${title}: ${detail}" loading="lazy"><span>${detail}</span></div><div class="product-details"><p class="product-kicker">${escapeHTML(category)}${audience} <i>·</i> Por pedido</p><h2>${title}</h2><p class="product-description">${description}</p><div class="product-price"><span>Precio</span><strong>$${formattedPrice}</strong><small>Consultá talles y disponibilidad</small></div><a class="primary-link" href="https://wa.me/59892822192?text=${message}" target="_blank" rel="noreferrer">Consultar por WhatsApp <span>↗</span></a><p class="product-note">Confirmamos disponibilidad antes de coordinar tu pedido.</p></div></article>`;
   }).join("")}</section>`;
   }).join("");
-  catalogLinks.innerHTML=[...groups.keys()].map(category=>`<a class="drawer-link" href="#categoria-${slugify(category)}">${escapeHTML(category)} <span>✿</span></a>`).join("");
 }
 renderCatalog();
 
 // Cuando el catálogo esté conectado, la web tomará los productos publicados de la base.
 const dbConfig=window.TUNITA_SUPABASE||{};
+let publicClient=null;
 if(dbConfig.url&&dbConfig.key&&window.supabase?.createClient){
-  const publicClient=window.supabase.createClient(dbConfig.url,dbConfig.key);
+  publicClient=window.supabase.createClient(dbConfig.url,dbConfig.key);
   publicClient.from("products").select("category,name,detail,price,image_url,description,active").eq("active",true).order("created_at",{ascending:false})
     .then(({data,error})=>{if(!error&&Array.isArray(data)){catalogProducts=data.map(product=>({...product,image:product.image_url}));renderCatalog();}});
 }
 
-const categoryNames={remeras:"remeras",pantalones:"pantalones",buzos:"buzos",shorts:"shorts",medias:"medias"};
-const categoryButtons=[...document.querySelectorAll("[data-select-category]")];
+const categoryButtons=[...document.querySelectorAll("[data-catalog-category]")];
 const contactTitle=document.querySelector("#contact-title");
 const contactDescription=document.querySelector("#contact-description");
 const contactWhatsapp=document.querySelector("#contact-whatsapp");
 categoryButtons.forEach(button=>button.addEventListener("click",()=>{
-  const category=categoryNames[button.dataset.selectCategory];
-  if(category){
-    contactTitle.textContent=`¿Buscás ${category}?`;
-    contactDescription.textContent=`Consultanos por ${category}: revisamos las opciones disponibles y coordinamos tu pedido por WhatsApp.`;
-    contactWhatsapp.href=`https://wa.me/59892822192?text=${encodeURIComponent(`Hola Tunita Kids, quería consultar por ${category}.`)}`;
-    contactWhatsapp.textContent="Consultar disponibilidad →";
-    contactWhatsapp.setAttribute("aria-label",`Consultar disponibilidad de ${category} por WhatsApp`);
-  }
+  const category=button.dataset.catalogCategory;
+  const section=document.querySelector(`#categoria-${slugify(category)}`);
   setDrawerOpen(false);
+  if(section){section.scrollIntoView({behavior:"smooth",block:"start"});return;}
+  contactTitle.textContent=`¿Buscás ${category.toLowerCase()}?`;
+  contactDescription.textContent=`Estamos preparando esta parte del catálogo. Escribinos y consultamos opciones y disponibilidad de ${category.toLowerCase()}.`;
+  contactWhatsapp.href=`https://wa.me/59892822192?text=${encodeURIComponent(`Hola Tunita Kids, quería consultar por ${category.toLowerCase()}.`)}`;
+  contactWhatsapp.textContent="Consultar disponibilidad →";
+  contactWhatsapp.setAttribute("aria-label",`Consultar disponibilidad de ${category.toLowerCase()} por WhatsApp`);
   document.querySelector("#ropa").scrollIntoView({behavior:"smooth",block:"start"});
 }));
+
+// El enlace privado aparece únicamente si hay una sesión autenticada y autorizada.
+const adminMenuLink=document.querySelector("#menu-admin-link");
+async function refreshAdminMenuLink(session){
+  if(!adminMenuLink)return;
+  adminMenuLink.hidden=true;
+  if(!session?.user||!publicClient)return;
+  const {data}=await publicClient.from("admin_users").select("user_id").eq("user_id",session.user.id).maybeSingle();
+  adminMenuLink.hidden=!data;
+}
+if(publicClient){
+  publicClient.auth.getSession().then(({data})=>refreshAdminMenuLink(data.session));
+  publicClient.auth.onAuthStateChange((_event,session)=>setTimeout(()=>refreshAdminMenuLink(session),0));
+}
 
 const menuTrigger=document.querySelector("#menu-trigger");
 const sideMenu=document.querySelector("#side-menu");
@@ -69,6 +81,6 @@ function setDrawerOpen(open){
 menuTrigger.addEventListener("click",()=>setDrawerOpen(menuTrigger.getAttribute("aria-expanded")!=="true"));
 drawerClose.addEventListener("click",()=>setDrawerOpen(false));
 drawerShade.addEventListener("click",()=>setDrawerOpen(false));
-sideMenu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setDrawerOpen(false)));
+sideMenu.addEventListener("click",event=>{if(event.target.closest("a"))setDrawerOpen(false)});
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menuTrigger.getAttribute("aria-expanded")==="true")setDrawerOpen(false)});
 
