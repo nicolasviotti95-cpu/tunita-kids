@@ -136,3 +136,13 @@
 @media(max-width:680px){.masthead{height:70px;min-height:70px;padding:7px 12px;grid-template-columns:1fr auto 1fr}.masthead .wordmark img{width:37px;height:37px}.masthead .wordmark>span{font-size:1.22rem}.menu-trigger{min-height:38px;padding:0 10px;font-size:.7rem;gap:7px}.masthead-contact{padding:10px 11px;font-size:.67rem}.drawer-shade{inset:104px 0 0}.side-drawer{top:104px;bottom:auto;max-height:calc(100dvh - 104px);width:min(340px,88vw);padding:20px 21px 25px;border-radius:0 0 18px 0}.simple-opening{min-height:calc(76svh - 34px);padding:35px 24px 54px;align-items:center}.simple-opening .opening-copy{width:100%;margin:0}.simple-opening h1{font-size:clamp(3.4rem,13vw,5.1rem)}.simple-opening .opening-intro{font-size:.98rem}.empty-category{margin-bottom:43px;padding:38px 20px}.simple-footer{text-align:center;font-size:.66rem;gap:6px}.simple-footer span+span:before{margin-right:6px}}
 @media(prefers-reduced-motion:reduce){.side-drawer,.drawer-shade{transition:none}}
 
+/* Variante elegida: bienvenida limpia con Tunita como protagonista. */
+.simple-opening{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:min(710px,calc(100svh - 110px));padding:55px 7vw 70px;overflow:hidden}
+.simple-opening:after{display:none}
+.simple-opening .opening-copy{width:min(600px,100%);margin-left:clamp(0px,6vw,80px)}
+.simple-opening .opening-art{position:relative;z-index:1;display:grid;place-items:center;width:100%;min-height:420px;height:auto;padding:0;pointer-events:none}
+.simple-opening .opening-art:before{content:"";position:absolute;z-index:-1;inset:6% 2% 4% 5%;width:auto;height:auto;border-radius:46% 54% 52% 48% / 43% 46% 54% 57%;background:#f9e4dc;transform:rotate(-6deg)}
+.simple-opening .hero-mascot{display:block;width:min(440px,92%);height:auto;object-fit:contain;filter:none}
+@media(max-width:850px){.simple-opening{grid-template-columns:1fr 1fr;min-height:620px;padding:38px 4vw 52px;gap:4px}.simple-opening .opening-copy{margin-left:2vw}.simple-opening .opening-art{min-height:330px}.simple-opening .simple-kicker{font-size:.66rem}.simple-opening h1{font-size:clamp(3rem,6.6vw,4.5rem)}}
+@media(max-width:600px){.simple-opening{grid-template-columns:1fr;gap:8px;min-height:calc(100svh - 104px);padding:44px 24px 30px;align-content:center}.simple-opening .opening-copy{margin:0}.simple-opening h1{font-size:clamp(3.45rem,13vw,5rem)}.simple-opening .opening-intro{font-size:.96rem;margin:18px 0 22px}.simple-opening .opening-art{min-height:0;width:min(100%,330px);justify-self:center;margin-top:5px}.simple-opening .opening-art:before{inset:5% 2% 4%}.simple-opening .hero-mascot{width:min(285px,82vw)}}
+
